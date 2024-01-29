@@ -28,7 +28,10 @@ const CartCard = ({
         margin: 30,
         display: "flex",
         alignItems: "center",
-        height: 500,
+        border: "1px solid rgba(0, 0, 0, 0.15)",
+        justifyContent: "space-between",
+        padding: 20,
+        borderRadius: 25,
       }}
     >
       <div>
@@ -40,15 +43,33 @@ const CartCard = ({
       </div>
       <div>
         <span>{item.productName}</span>
-        <span>{formatedPeso(item.unitPrice * item.quantity)}</span>
+        <h4>{formatedPeso(item.unitPrice * item.quantity)}</h4>
       </div>
       <div>
-        <div>
-          <span onClick={() => handleQuantity(item, "subtract")}>-</span>
-          <span style={{ marginLeft: 20, marginRight: 20 }}>
-            {item.quantity}
-          </span>
-          <span onClick={() => handleQuantity(item, "add")}>+</span>
+        <div style={{ marginBottom: 10 }}>
+          <div
+            style={{
+              background: "green",
+              padding: 2,
+              borderRadius: 15,
+              textAlign: "center",
+            }}
+            onClick={() => handleQuantity(item, "add")}
+          >
+            <span>+</span>
+          </div>
+          <span style={{ paddingLeft: 25 }}>{item.quantity}</span>
+          <div
+            style={{
+              background: "red",
+              padding: 2,
+              borderRadius: 15,
+              textAlign: "center",
+            }}
+            onClick={() => handleQuantity(item, "subtract")}
+          >
+            <span>-</span>
+          </div>
         </div>
         <Button label="Remove" onClick={() => handleRemovetoCart(item)} />
       </div>
@@ -57,3 +78,11 @@ const CartCard = ({
 };
 
 export default CartCard;
+
+const styles = {
+  button: {
+    padding: 2,
+    borderRadius: 15,
+    textAlign: "center",
+  },
+};

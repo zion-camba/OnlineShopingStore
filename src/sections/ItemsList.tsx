@@ -48,6 +48,7 @@ const ItemsList = ({
         alignItems: "center",
       }}
     >
+      <h4>Items</h4>
       <input
         type="text"
         placeholder="Search product name"
@@ -56,23 +57,31 @@ const ItemsList = ({
       />
 
       {toggleSort ? (
-        <span onClick={() => handleSwitchSort("hightolow")}>
-          Highest to Lowest
+        <span
+          onClick={() => handleSwitchSort("hightolow")}
+          style={{ cursor: "default" }}
+        >
+          Sort Highest to Lowest
         </span>
       ) : (
-        <span onClick={() => handleSwitchSort("lowtohigh")}>
-          Lowest to Highest
+        <span
+          onClick={() => handleSwitchSort("lowtohigh")}
+          style={{ cursor: "default" }}
+        >
+          Sort Lowest to Highest
         </span>
       )}
 
-      {data.map((item) => (
-        <ItemCard
-          item={item}
-          cart={cart}
-          key={item.id}
-          handleAddtoCart={() => handleAddtoCart(item)}
-        />
-      ))}
+      <div style={{ maxHeight: "80vh", overflow: "auto" }}>
+        {data.map((item) => (
+          <ItemCard
+            item={item}
+            cart={cart}
+            key={item.id}
+            handleAddtoCart={() => handleAddtoCart(item)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

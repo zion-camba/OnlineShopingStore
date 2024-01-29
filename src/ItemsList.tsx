@@ -14,7 +14,6 @@ interface ItemsListProps {
 }
 
 const ItemsList: React.FC<ItemsListProps> = ({ items }) => {
-  console.log("zzz", items);
   return (
     <div>
       <h2>Items List</h2>

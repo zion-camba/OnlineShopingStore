@@ -4,6 +4,7 @@ import ITEMS from "./items.json";
 import Categories from "./sections/Categories";
 import ItemsList from "./sections/ItemsList";
 import Cart from "./sections/Cart";
+import Modal from "./components/Modal";
 
 interface Item {
   id: string;
@@ -23,6 +24,7 @@ interface CartItem {
 }
 
 const App: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
   const [baseData, setbaseData] = useState<Item[]>([]);
   const [data, setData] = useState<Item[]>([]);
@@ -72,7 +74,6 @@ const App: React.FC = () => {
       sortedData = data.slice().sort((a, b) => a.unitPrice - b.unitPrice);
       setData(sortedData);
     } else if (type === "hightolow") {
-      console.log("zzz here");
       sortedData = data.slice().sort((a, b) => b.unitPrice - a.unitPrice);
       setData(sortedData);
     }
@@ -134,8 +135,14 @@ const App: React.FC = () => {
     localStorage.removeItem("cart");
   };
 
+  const handleCheckOut = () => {
+    handleClearCart();
+    setIsOpen(true);
+  };
+
   return (
     <div style={styles.flexContainer}>
+      {isOpen && <Modal onClose={() => setIsOpen(false)} />}
       <Categories
         data={uniqueCategories}
         selectedCategory={selectedCategory}
@@ -153,6 +160,7 @@ const App: React.FC = () => {
         handleQuantity={handleQuantity}
         handleRemovetoCart={handleRemovetoCart}
         handleClearCart={handleClearCart}
+        handleCheckOut={handleCheckOut}
       />
     </div>
   );
@@ -165,7 +173,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     with: "100vh",
-    marginLeft: "20%",
-    marginRight: "20%",
+    marginLeft: "10%",
+    marginRight: "10%",
   },
 };

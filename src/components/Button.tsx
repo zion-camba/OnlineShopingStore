@@ -11,7 +11,7 @@ const Button = ({ label, isDisabled, onClick }: ButtonProps) => {
     <button
       style={{
         borderRadius: 25,
-        padding: 15,
+        padding: 6,
         background: isDisabled ? "gray" : "green",
       }}
       onClick={onClick}

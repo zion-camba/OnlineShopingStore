@@ -36,7 +36,8 @@ const ItemCard = ({ item, cart, handleAddtoCart }: ItemsCardProps) => {
         margin: 30,
         paddingLeft: 30,
         paddingRight: 30,
-        background: "gray",
+        border: "1px solid rgba(0, 0, 0, 0.15)",
+        borderRadius: 25,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -68,10 +69,3 @@ const ItemCard = ({ item, cart, handleAddtoCart }: ItemsCardProps) => {
 };
 
 export default ItemCard;
-
-const styles = {
-  container: {
-    height: "100%",
-    background: "red",
-  },
-};

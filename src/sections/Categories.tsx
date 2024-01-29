@@ -15,7 +15,7 @@ const Categories: React.FC<CategoriesProps> = ({
     <div style={styles.catContainer}>
       <h4>Categories</h4>
       <div
-        style={selectedCategory === "all" ? styles.selected : {}}
+        style={selectedCategory === "all" ? styles.selected : styles.unselected}
         onClick={() => handelSelectCategory("all")}
       >
         all
@@ -23,7 +23,9 @@ const Categories: React.FC<CategoriesProps> = ({
       {data.map((item) => (
         <div
           key={item}
-          style={selectedCategory === item ? styles.selected : {}}
+          style={
+            selectedCategory === item ? styles.selected : styles.unselected
+          }
           onClick={() => handelSelectCategory(item)}
         >
           {item}
@@ -38,9 +40,18 @@ export default Categories;
 const styles = {
   catContainer: {
     height: "100vh",
-    background: "gray",
   },
   selected: {
+    cursor: "default",
+    borderRadius: 10,
+    padding: 8,
+    marginTop: 10,
+    marginBottom: 10,
     background: "green",
+  },
+  unselected: {
+    marginTop: 10,
+    marginBottom: 10,
+    cursor: "default",
   },
 };
